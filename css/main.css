@@ -1113,7 +1113,7 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 40px;
   color: #fff;
-  background: #222;
+  background: #fff;
   border-bottom: none;
 }
 .brand:hover {
@@ -1132,11 +1132,14 @@ pre .javascript .function {
   font-size: 20px;
   font-weight: normal;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #2f2f2f;
 }
 .site-subtitle {
   margin-top: 10px;
   font-size: 13px;
-  color: #999;
+  font-weight: 200;
+  font-size: 14px;
+  color: #a7a7a7;
 }
 .use-motion .brand {
   opacity: 0;
@@ -1165,6 +1168,10 @@ pre .javascript .function {
   background: transparent;
   border: none;
 }
+.site-nav {
+  margin-top: 30px;
+  margin-bottom: -80px;
+}
 @media (max-width: 767px) {
   .site-nav {
     display: none;
@@ -1191,7 +1198,7 @@ pre .javascript .function {
 }
 .menu .menu-item {
   display: inline-block;
-  margin: 0 10px;
+  margin: 0 8px;
   list-style: none;
 }
 @media screen and (max-width: 767px) {
@@ -1972,7 +1979,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #6b49ff;
+  background: #5436ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2815,6 +2822,6 @@ embed {
   margin-top: 60px;
   margin-bottom: 60px;
   padding: 25px;
-  -webkit-box-shadow: 0 0 10px rgba(161,161,161,0.6);
-  -moz-box-shadow: 0 0 10px rgba(161,161,161,0.6);
+  -webkit-box-shadow: 0 0 12px rgba(140,140,140,0.4);
+  -moz-box-shadow: 0 0 12px rgba(140,140,140,0.4);
 }
