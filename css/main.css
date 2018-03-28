@@ -1210,7 +1210,8 @@ pre .javascript .function {
   transition-delay: 0s;
 }
 .menu .menu-item a:hover {
-  border-bottom-color: #a2ced6;
+  border-bottom-color: #87daff;
+  color: #87daff;
 }
 .menu .menu-item .fa {
   margin-right: 5px;
@@ -1971,7 +1972,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ffd2ff;
+  background: #6b49ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2816,7 +2817,4 @@ embed {
   padding: 25px;
   -webkit-box-shadow: 0 0 10px rgba(161,161,161,0.6);
   -moz-box-shadow: 0 0 10px rgba(161,161,161,0.6);
-}
-.menu .menu-item a:hover {
-  color: #a2ced6;
 }
