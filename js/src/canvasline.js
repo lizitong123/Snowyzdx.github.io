@@ -6,6 +6,7 @@ var ch = canvas.height = window.innerHeight,
     cy = ch / 2;
 
 ctx.fillStyle = "#ECE9E6";
+
 var linesNum = 16;
 var linesRy = [];
 var requestId = null;
@@ -30,7 +31,7 @@ function Line(flag) {
 
     // 线条颜色
     this.draw = function() {
-        ctx.strokeStyle = "#eef2f3";
+        ctx.strokeStyle = "#DFEEE7";
         ctx.beginPath();
         ctx.moveTo(this.a.x, this.a.y);
         ctx.lineTo(this.b.x, this.b.y);
@@ -141,7 +142,7 @@ function Intersect2lines(l1, l2) {
 function markPoint(p) {
     ctx.beginPath();
     ctx.arc(p.x, p.y, 2, 0, 2 * Math.PI);
-    ctx.fillStyle = '#8e9eab';
+    ctx.fillStyle = '#B4CBD1';
     ctx.fill();
 }
 
