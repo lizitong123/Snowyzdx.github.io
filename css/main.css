@@ -1966,7 +1966,7 @@ img:hover {
 .links-of-author a {
   display: inline-block;
   vertical-align: middle;
-  margin-right: 10px;
+  margin-right: 20px;
   margin-bottom: 10px;
   border-bottom-color: #555;
   font-size: 13px;
@@ -1979,7 +1979,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #ff758c;
+  background: #63f42a;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2824,4 +2824,59 @@ embed {
   padding: 25px;
   -webkit-box-shadow: 0 0 12px rgba(140,140,140,0.4);
   -moz-box-shadow: 0 0 12px rgba(140,140,140,0.4);
+}
+#canvas {
+  width: 100%;
+  height: 100%;
+}
+.bg_content {
+  position: fixed;
+  top: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  cursor: none;
+  background: #fff;
+}
+.header {
+  background: transparent;
+}
+@media (max-width: 767px) {
+  .menu {
+    text-align: right;
+  }
+}
+@-moz-keyframes colorChange {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+@-webkit-keyframes colorChange {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+@-o-keyframes colorChange {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+@keyframes colorChange {
+  0%, 100% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.9;
+  }
 }
