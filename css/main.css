@@ -1113,7 +1113,6 @@ pre .javascript .function {
   display: inline-block;
   padding: 0 40px;
   color: #fff;
-  background: #fff;
   border-bottom: none;
 }
 .brand:hover {
@@ -1133,7 +1132,6 @@ pre .javascript .function {
   font-weight: normal;
   font-family: 'Lato', "PingFang SC", "Microsoft YaHei", sans-serif;
   color: #2f2f2f;
-  background-color: rgba(255,255,255,0);
 }
 .site-subtitle {
   margin-top: 10px;
@@ -1980,7 +1978,7 @@ img:hover {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #69f9ff;
+  background: #e49dff;
 }
 .links-of-blogroll {
   font-size: 13px;
