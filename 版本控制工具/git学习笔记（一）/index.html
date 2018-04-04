@@ -80,7 +80,7 @@
 
 
 
-  <meta name="keywords" content="Git," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -91,18 +91,26 @@
 
 
 
-<meta name="description" content="!git01 前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。">
-<meta name="keywords" content="Git">
+<meta name="description" content="前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。">
+<meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git学习笔记（一）">
 <meta property="og:url" content="http://www.github.com/Asiazdx/版本控制工具/git学习笔记（一）/index.html">
 <meta property="og:site_name" content="Snowy&#39;blog">
-<meta property="og:description" content="!git01 前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。">
+<meta property="og:description" content="前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-04T06:56:00.367Z">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita01.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita02.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita03.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita04.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita05.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita06.png">
+<meta property="og:updated_time" content="2018-04-04T07:08:04.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习笔记（一）">
-<meta name="twitter:description" content="!git01 前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。">
+<meta name="twitter:description" content="前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。">
+<meta name="twitter:image" content="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg">
 
 
 
@@ -395,7 +403,7 @@
       
 
       
-        <p><a href="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg" target="_blank" rel="noopener">!git01</a></p>
+        <p><img src="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg" width="600" alt="image"></p>
 <p>前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。<br><a id="more"></a></p>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
 <li><a href="/版本控制工具/git学习笔记（一）/" title="git学习笔记（一）—git概述">git学习笔记（一）—git概述</a>  </li>
@@ -409,7 +417,7 @@
 <p>版本控制系统（VCS）最基本的功能就是版本控制。所谓的版本控制，意思就是在文件的修改历程中保留修改历史，让你可以方便的查看或者撤销之前对文件的修改操作。   </p>
 </blockquote>
 <p>因为我们在开发过程有时会出错，比方说现在你写的代码有点问题，想退回改动之前的样子， 但是改动的地方太多，肯定是记不住的。那么这个时候就需要有一个版本控制系统帮助你恢复到之前的代码版本。<br>用过Photoshop的都知道，我们可以通过ctrl+z（或者ctrl+alt+z）回退到某一个历史记录中。版本控制系统功能和PS的回退功能类似，只不过PS是软件会自动记录我们的操作，而版本控制系统需要我们主动提交修改的版本。<br>版本控制系统根据不同的工作需求分为下面几类。   </p>
-<h3 id="1、本地版本控制系统"><a href="#1、本地版本控制系统" class="headerlink" title="1、本地版本控制系统"></a>1、本地版本控制系统</h3><p>许多人习惯用复制整个项目目录的方式来保存不同的版本，或许还会改名加上备份时间以示区别。这么做唯一的好处就是简单。不过也会带来很多问题比如：有时候会混淆所在的工作目录，一旦弄错了文件丢了数据撤销恢复就麻烦了。<br>为了解决这个问题，很早以前就开发了许多 <strong>本地版本控制系统</strong>，其中最流行的一种叫做RCS。这种系统都是采用某种简单的数据库来记录文件的历次更新差异。<br><a href="gita01,png">!image</a><br>本地版本控制系统适合于个人开发，对于多人协作开发就不适合了。</p>
+<h3 id="1、本地版本控制系统"><a href="#1、本地版本控制系统" class="headerlink" title="1、本地版本控制系统"></a>1、本地版本控制系统</h3><p>许多人习惯用复制整个项目目录的方式来保存不同的版本，或许还会改名加上备份时间以示区别。这么做唯一的好处就是简单。不过也会带来很多问题比如：有时候会混淆所在的工作目录，一旦弄错了文件丢了数据撤销恢复就麻烦了。<br>为了解决这个问题，很早以前就开发了许多 <strong>本地版本控制系统</strong>，其中最流行的一种叫做RCS。这种系统都是采用某种简单的数据库来记录文件的历次更新差异。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gita01.png" alt="gita01"><br>本地版本控制系统适合于个人开发，对于多人协作开发就不适合了。</p>
 <h3 id="2、集中式版本控制系统"><a href="#2、集中式版本控制系统" class="headerlink" title="2、集中式版本控制系统"></a>2、集中式版本控制系统</h3><p>大多数情况下开发一个项目我们是需要多人协同开发的，那么本地版本控制系统就不适合了。这时候我们可能会选择集中式版本控制系统（Centralized VCS）。<br><strong>工作模式</strong>：<br>假设你在一个人团队，你们计划开发一个软件，并决定使用集中式版本控制系统来管理你们的代码。于是：   </p>
 <ol>
 <li>作为项目的主工程师，首先你一个人花了两天的时间搭建了项目框架；</li>
@@ -418,12 +426,12 @@
 <li>在之后的开发过程中，你们三个人为了工作方便，总是每个人独立负责开发一个功能，在这个功能开发完成后，这个人就把他的这些 <strong>新代码提交到中央仓库</strong>。   </li>
 <li>每次当有人把代码提交到中央仓库的时候，另外两个人就可以选择 <strong>把这些代码同步到自己的机器上</strong>，保持自己的本地代码总是最新的。   </li>
 </ol>
-<p><a href="git02.png">!image</a>     </p>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gita02.png" alt="gita02">    </p>
 <p>这样，你们三个人在各种电脑上同步开发一个项目，互相不受影响。只需通过中央服务器进行交流。<br>当然，实际开发工作中不会这么简单，因为你时常会需要处理代码冲突，查看版本历史，回退代码版本等等。<br>另外，由于集中式版本控制系统的最新代码是存储在中央服务器的，当如果中央服务器出现了故障，那么最新版本的数据就很有可能丢失。<br>其次，这种工作模式需要在联网的情况下工作，因为你每次需要最新版本的代码时都需要从中央服务器中下载下来。   </p>
 <p>SVN就是集中式版本控制系统的典型代表。   </p>
 <h3 id="3、分布式版本控制系统"><a href="#3、分布式版本控制系统" class="headerlink" title="3、分布式版本控制系统"></a>3、分布式版本控制系统</h3><p>分布式管理系统（Distributed VCS/DVCS）和集中式版本控制系统的区别在于，分布式版本控制系统没有真正的中央仓库，每个电脑都是一个节点，每个节点都保存着所有版本历史。每个人在自己的机器上就可以提交代码，查看历史，而无需联网和中央服务器进行交互。因为每台电脑上都会有一个本地仓库。如果有人修改了项目中的某一部分代码，它可以将修改的部分推送给其他队员。   </p>
 <p>大部分情况下为了管理和协调团队的交流，分布式版本控制系统会设立一个中转站（代码托管平台，比如github）。     </p>
-<p><a href="git03.png">!image</a><br><strong>工作模式</strong><br>依然以三人团队为例  </p>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gita03.png" alt="gita03"><br><strong>工作模式</strong><br>依然以三人团队为例  </p>
 <ol>
 <li>首先，你作为主工程师，独立搭建了项目架构，<strong>并把这些代码提交到了本地仓库</strong></li>
 <li>然后，你在服务器（或者代码托管平台）上创建了一个中央仓库，并把1中的提交 <strong>从本地仓库推送到了服务器的中央仓库</strong>   </li>
@@ -440,8 +448,8 @@
 <li><strong>工作区（Workspace）</strong>：就是你平时存放项目代码的地方</li>
 <li><strong>远程仓库（Remote Directory）</strong>：就是托管代码的服务器。你可以与其进行数据交换</li>
 </ul>
-<p><a href="gita04.png">!iamge</a>   </p>
-<h3 id="2-Git整体工作流程"><a href="#2-Git整体工作流程" class="headerlink" title="2.Git整体工作流程"></a>2.Git整体工作流程</h3><p>针对不同的操作，git工作流程可能会有一些差异，我们这节先说一下整体的主工作流程，具体的操作对应的工作流程后面再具体介绍。<br>请看下图（可以暂时先忽略图中的git操作命令）<br><a href="gita05.png">!iamge</a><br>整体的工作流程是这样的：  </p>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gita04.png" alt="gita04">  </p>
+<h3 id="2-Git整体工作流程"><a href="#2-Git整体工作流程" class="headerlink" title="2.Git整体工作流程"></a>2.Git整体工作流程</h3><p>针对不同的操作，git工作流程可能会有一些差异，我们这节先说一下整体的主工作流程，具体的操作对应的工作流程后面再具体介绍。<br>请看下图（可以暂时先忽略图中的git操作命令）<br><img src="http://p6nfblqvu.bkt.clouddn.com/gita05.png" alt="gita05"><br>整体的工作流程是这样的：  </p>
 <ol>
 <li>程序员在本地的工作目录中对项目文件进行增、删、改等操作</li>
 <li>可以将需要进行版本管理的文件放入暂存区,也可以将其直接提交到本地仓库</li>
@@ -454,7 +462,7 @@
 <li>已经提交（commited）</li>
 </ul>
 <h2 id="三、Git的安装和配置"><a href="#三、Git的安装和配置" class="headerlink" title="三、Git的安装和配置"></a>三、Git的安装和配置</h2><h3 id="1-下载安装Git"><a href="#1-下载安装Git" class="headerlink" title="1.下载安装Git"></a>1.下载安装Git</h3><p>在<a href="https://git-scm.com/" target="_blank" rel="noopener">Git官网</a>中找到适合自己电脑系统的Git进行下载。下载后安装就一直按照默认的安装步骤操作即可。如果需要特殊配置仔细阅读配置选项。关于Git的安装这里不多介绍了，相信都会完成的。   </p>
-<h3 id="2、Git配置"><a href="#2、Git配置" class="headerlink" title="2、Git配置"></a>2、Git配置</h3><p>使用git config -l就可以查看现在的git环境详细配置。（下面的git命令都是在windows系统下的命令）。<br><a href="gita06.png">!iamge</a><br>查看不同级别的配置文件：  </p>
+<h3 id="2、Git配置"><a href="#2、Git配置" class="headerlink" title="2、Git配置"></a>2、Git配置</h3><p>使用git config -l就可以查看现在的git环境详细配置。（下面的git命令都是在windows系统下的命令）。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gita06.png" alt="gita06"><br>查看不同级别的配置文件：  </p>
 <ul>
 <li>查看系统配置：git config –system –list</li>
 <li>查看当前用户配置：git config –global –list</li>
@@ -519,7 +527,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Git/" rel="tag"><i class="fa fa-tag"></i> Git</a>
+            <a href="/tags/git/" rel="tag"><i class="fa fa-tag"></i> git</a>
           
         </div>
       
@@ -643,7 +651,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-count">1</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
