@@ -91,18 +91,18 @@
 
 
 
-<meta name="description" content="永无止境，砥砺前行">
+<meta name="description" content="!image本文将介绍git对本地文件的一些常用的操作。（下面的一些命令都是window系统下操作的）">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git学习笔记（二）">
 <meta property="og:url" content="http://www.github.com/Asiazdx/版本控制工具/git学习笔记（二）/index.html">
 <meta property="og:site_name" content="Snowy&#39;blog">
-<meta property="og:description" content="永无止境，砥砺前行">
+<meta property="og:description" content="!image本文将介绍git对本地文件的一些常用的操作。（下面的一些命令都是window系统下操作的）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-03T09:49:45.786Z">
+<meta property="og:updated_time" content="2018-04-04T06:53:05.522Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git学习笔记（二）">
-<meta name="twitter:description" content="永无止境，砥砺前行">
+<meta name="twitter:description" content="!image本文将介绍git对本地文件的一些常用的操作。（下面的一些命令都是window系统下操作的）">
 
 
 
@@ -395,7 +395,44 @@
       
 
       
-        
+        <p><a href="gitb01.png">!image</a><br>本文将介绍git对本地文件的一些常用的操作。（下面的一些命令都是window系统下操作的）<br><a id="more"></a></p>
+<h2 id="一、创建Git仓库"><a href="#一、创建Git仓库" class="headerlink" title="一、创建Git仓库"></a>一、创建Git仓库</h2><p>在使用管理我们的项目文件之前我们需要有一个本地仓库才行。所以我们要在需要进行Git管理的项目中创建一个仓库。    </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 在当前目录下新建一个Git代码库</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
+<p>你也可以仓库和项目目录一起创建：   </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 新建一个目录，将其初始化为Git代码库</span><br><span class="line">git init [project-name]</span><br></pre></td></tr></table></figure>
+<p>在实际工作中我们更多的是需要克隆团队搭建好的框架然后在本地进行开发，所以要将远程服务器上的仓库完全镜像一份到本地:   </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 克隆一个项目和它的整个代码历史（版本信息）</span><br><span class="line">git clone url</span><br></pre></td></tr></table></figure>
+<p>其中url是远程服务器上的仓库地址。   </p>
+<p>创建好仓库之后我们进入项目目录，会发现一个隐藏的.git目录。关于版本的所有信息都存放在这个目录里。所以如果你想删除你某个项目中的git只需要删除这个.git目录即可。<br><a href="gitb02.png">!iamge</a>     </p>
+<ul>
+<li><strong>config</strong>:这个文件夹里是你的保存设置，这里将写入远程URL，比如你的邮箱、用户名等。没一次在控制端使用“git config”，它都会在这里结束。   </li>
+<li><strong>description</strong>：用来显示对仓库的描述</li>
+<li><strong>hooks</strong>：这里有一个有趣的特性。Git有一套可以自动运行在任何一个有意义的git阶段下的脚本，叫做hooks。hooks可以运行在commit/rebase/pull等状态之前或之后。脚本的名称决定了它什么时候执行。一个有用的pre-push脚本的例子将会被运行以测试控制器（远程控制）中的所有样式规则保持一致。  </li>
+<li><strong>info-exclude</strong>:可以将你不想被git处理的文件放到到.gitnore文件夹里。<br>下面我们在之前创建的项目的根目录下新建一个index.html文件，然后在当目录下执行命令：   </li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 将修改提交到暂存区中</span><br><span class="line">git add .</span><br><span class="line"># 讲修改提交到本地仓库中</span><br><span class="line">git commit -m<span class="string">"fist update"</span></span><br></pre></td></tr></table></figure>
+<p>上面的命令可能你看不懂，可以直接看注释。我们发现.git文件夹的结构发生了变化:<br><a href="gitb03.png">!image</a><br>可以看到多了一些内容。这些都是git执行commit操作之后自动创建的，git都会将其压缩并存储到自己的数据结构中。这个压缩对象有一个独特的名字、一个哈希码，存储在对象目录下。      </p>
+<p>简单的说你可以将commit看做是工作目录的一种快照，但不仅仅是快照。实际上当你commit时，git只做两件事情来创造你的工作目录的快照：   </p>
+<ol>
+<li>如果文件没有修改，git仅仅增加压缩文件的名字（hash）到快照中</li>
+<li>如果文件被修改过，git就将其压缩，再将压缩后的文件存储到对象文件夹中。然后再添加这个压缩文件的文件名（hash）到快照中去。   </li>
+</ol>
+<p>这些压缩文件都会被存放在对象文件夹下。比如刚刚我们创建了一个index.html文件commit后，对象目录中多出了三个文件夹，其中第一个是我的index.html压缩文件，另一个对应的是我commit时所创建的快照文件，第三个是commit压缩，因为commit本身也是一个对象，它也会被压缩并存储在对象文件夹中。  </p>
+<p>其实一个commit命令实际上包含4件事情：  </p>
+<ul>
+<li>工作目录的快照文件的名称（哈希码）</li>
+<li>注释</li>
+<li>提交者信息</li>
+<li>Parent commit的哈希码</li>
+</ul>
+<p>其实git中任何事情都可以用一个正确的hash来得到，分支，标签，HEAD它们都一样。下面我们来看看HEAD<br><strong>HEAD</strong><br>打开refs/header/master发现：<br>10ea238c57c595e6a2bfa1619e52f2b25321ac6c<br>发现这和我么第一次commit时的哈希码是完全一样的，这说明head或者master无非是指向commit的一个指针。<br>好了，这一块讲的可能比较抽象，如果你看懂了最好，看不懂的话也不影响下面的学习。这里仅仅是让我们更加深刻的理解git内部是如何工作的。   </p>
+<h2 id="二、Git文件操作"><a href="#二、Git文件操作" class="headerlink" title="二、Git文件操作"></a>二、Git文件操作</h2><p>前面我们提到了文件的三个不同状态：未修改（unmodified）、已经修改（modified）、已经提交（staged），现在再加一个状态：未跟踪（Untracked）<br><a href="gitb04.png">!iamge</a>  </p>
+<h3 id="1、查看文件状态"><a href="#1、查看文件状态" class="headerlink" title="1、查看文件状态"></a>1、查看文件状态</h3><p>可以通过git命令来查看指定文件的当前状态：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 查看指定文件状态</span><br><span class="line">git status filename1 filename2 ...</span><br><span class="line"># 查看所有文件状态</span><br><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><a href="gitb06.png">!image</a><br>不能不说git就是强大，我们在查看文件状态时它还会提示你可以对文件进行怎样的操作。<br>不同的git操作会改变这些状态的。下面介绍几个常用的git操作。<br><a href="gitb05.png">!image</a>  </p>
+<h3 id="2、添加文件或目录到暂存区"><a href="#2、添加文件或目录到暂存区" class="headerlink" title="2、添加文件或目录到暂存区"></a>2、添加文件或目录到暂存区</h3><p> 添加untreated状态的文件到暂存区，git命名如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 添加指定文件到暂存区  </span><br><span class="line">git add [filename1] [filename2]...    </span><br><span class="line"></span><br><span class="line"># 添加指定目录到暂存区，包括子目录   </span><br><span class="line">git add [dirname]</span><br><span class="line"></span><br><span class="line"># 添加当前目录的所有文件到暂存区</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
+<h3 id="3、移除暂存区中的文件或目录（撤销add操作）"><a href="#3、移除暂存区中的文件或目录（撤销add操作）" class="headerlink" title="3、移除暂存区中的文件或目录（撤销add操作）"></a>3、移除暂存区中的文件或目录（撤销add操作）</h3><p>执行面的命令，会直接从暂存区中删除文件，工作区中的数据不做改变。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 直接从暂存区删除文件，工作区则不做出改变</span><br><span class="line">git rm --cached &lt;filename&gt;</span><br></pre></td></tr></table></figure></p>
+<p>另一个方法就是</p>
+
       
     </div>
     
@@ -521,8 +558,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -614,6 +660,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、创建Git仓库"><span class="nav-number">1.</span> <span class="nav-text">一、创建Git仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Git文件操作"><span class="nav-number">2.</span> <span class="nav-text">二、Git文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、查看文件状态"><span class="nav-number">2.1.</span> <span class="nav-text">1、查看文件状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、添加文件或目录到暂存区"><span class="nav-number">2.2.</span> <span class="nav-text">2、添加文件或目录到暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、移除暂存区中的文件或目录（撤销add操作）"><span class="nav-number">2.3.</span> <span class="nav-text">3、移除暂存区中的文件或目录（撤销add操作）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
