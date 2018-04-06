@@ -99,17 +99,30 @@
 <meta property="og:site_name" content="Snowy&#39;blog">
 <meta property="og:description" content="本文将介绍git对本地文件的一些常用的操作。（下面的一些命令都是window系统下操作的）">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb.png">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb02.png">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb03.png">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb04.png">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb06.png">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb05.png">
-<meta property="og:updated_time" content="2018-04-04T07:11:28.968Z">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb07.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb08.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb09.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb11.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb12.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb13.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb14.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb15.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb16.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb17.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb18.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb19.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb20.png">
+<meta property="og:updated_time" content="2018-04-06T07:36:39.092Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git学习笔记（二）">
 <meta name="twitter:description" content="本文将介绍git对本地文件的一些常用的操作。（下面的一些命令都是window系统下操作的）">
-<meta name="twitter:image" content="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg">
+<meta name="twitter:image" content="http://p6nfblqvu.bkt.clouddn.com/gitb.png">
 
 
 
@@ -402,7 +415,7 @@
       
 
       
-        <p><img src="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg" width="600" alt="image"><br>本文将介绍git对本地文件的一些常用的操作。（下面的一些命令都是window系统下操作的）<br><a id="more"></a></p>
+        <p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb.png" width="600" alt="gitb"><br>本文将介绍git对本地文件的一些常用的操作。（下面的一些命令都是window系统下操作的）<br><a id="more"></a></p>
 <h2 id="一、创建Git仓库"><a href="#一、创建Git仓库" class="headerlink" title="一、创建Git仓库"></a>一、创建Git仓库</h2><p>在使用管理我们的项目文件之前我们需要有一个本地仓库才行。所以我们要在需要进行Git管理的项目中创建一个仓库。    </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 在当前目录下新建一个Git代码库</span><br><span class="line">git init</span><br></pre></td></tr></table></figure>
 <p>你也可以仓库和项目目录一起创建：   </p>
@@ -433,12 +446,117 @@
 <li>Parent commit的哈希码</li>
 </ul>
 <p>其实git中任何事情都可以用一个正确的hash来得到，分支，标签，HEAD它们都一样。下面我们来看看HEAD<br><strong>HEAD</strong><br>打开refs/header/master发现：<br>10ea238c57c595e6a2bfa1619e52f2b25321ac6c<br>发现这和我么第一次commit时的哈希码是完全一样的，这说明head或者master无非是指向commit的一个指针。<br>好了，这一块讲的可能比较抽象，如果你看懂了最好，看不懂的话也不影响下面的学习。这里仅仅是让我们更加深刻的理解git内部是如何工作的。   </p>
-<h2 id="二、Git文件操作"><a href="#二、Git文件操作" class="headerlink" title="二、Git文件操作"></a>二、Git文件操作</h2><p>前面我们提到了文件的三个不同状态：未修改（unmodified）、已经修改（modified）、已经提交（staged），现在再加一个状态：未跟踪（Untracked）<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitb04.png" alt="gitb04">    </p>
-<h3 id="1、查看文件状态"><a href="#1、查看文件状态" class="headerlink" title="1、查看文件状态"></a>1、查看文件状态</h3><p>可以通过git命令来查看指定文件的当前状态：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 查看指定文件状态</span><br><span class="line">git status filename1 filename2 ...</span><br><span class="line"># 查看所有文件状态</span><br><span class="line">git status</span><br></pre></td></tr></table></figure></p>
-<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb06.png" alt="gitb06"><br>不能不说git就是强大，我们在查看文件状态时它还会提示你可以对文件进行怎样的操作。<br>不同的git操作会改变这些状态的。下面介绍几个常用的git操作。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitb05.png" alt="gitb05">  </p>
-<h3 id="2、添加文件或目录到暂存区"><a href="#2、添加文件或目录到暂存区" class="headerlink" title="2、添加文件或目录到暂存区"></a>2、添加文件或目录到暂存区</h3><p> 添加untreated状态的文件到暂存区，git命名如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 添加指定文件到暂存区  </span><br><span class="line">git add [filename1] [filename2]...    </span><br><span class="line"></span><br><span class="line"># 添加指定目录到暂存区，包括子目录   </span><br><span class="line">git add [dirname]</span><br><span class="line"></span><br><span class="line"># 添加当前目录的所有文件到暂存区</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
-<h3 id="3、移除暂存区中的文件或目录（撤销add操作）"><a href="#3、移除暂存区中的文件或目录（撤销add操作）" class="headerlink" title="3、移除暂存区中的文件或目录（撤销add操作）"></a>3、移除暂存区中的文件或目录（撤销add操作）</h3><p>执行面的命令，会直接从暂存区中删除文件，工作区中的数据不做改变。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 直接从暂存区删除文件，工作区则不做出改变</span><br><span class="line">git rm --cached &lt;filename&gt;</span><br></pre></td></tr></table></figure></p>
-<p>另一个方法就是</p>
+<h2 id="二、查看文件状态"><a href="#二、查看文件状态" class="headerlink" title="二、查看文件状态"></a>二、查看文件状态</h2><p>在git版本控制系统中，文件总共有四种状态，分别是：  </p>
+<ul>
+<li><strong>未跟踪（Untracked）</strong>：此文件在工作区中，但是还没有加入到git仓库，还未参与版本控制。</li>
+<li><strong>未修改（Unmodified）</strong>：已经提交到仓库中了，但是在工作区中还未进行任何修改的文件，即版本库中的文件快照内容与工作区中的完全一致。</li>
+<li><strong>已经修改（Modified）</strong>：自上次提交之后，文件进行修改了，还没有进行其他任何操作</li>
+<li><strong>暂存状态（Staged）</strong>：文件已经加入到暂存区，还没有提交到仓库中</li>
+</ul>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb04.png" alt="gitb04"><br>可以通过git命令来查看指定文件的当前状态：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"># 查看指定文件状态</span><br><span class="line">git status filename1 filename2 ...</span><br><span class="line"># 查看所有文件状态</span><br><span class="line">git status</span><br></pre></td></tr></table></figure></p>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb06.png" alt="gitb06"><br>不能不说git就是强大，我们在查看文件状态时它还会提示你可以对文件进行怎样的操作。<br>不同的git操作文件会进入不同的阶段，同时会改变当前的状态。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitb05.png" alt="gitb05">   </p>
+<p>如何查看文件的状态我们可以用git status [filename]。那我们想查看指定状态的文件都有哪些该怎么办呢，比如我想知道我的项目中有哪些文件是未跟踪（Untracked）的。<br>我们可以通过 <strong>git ls-files</strong> 指令来查看指定状态的文件列表，如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"># 查看指定状态的文件</span><br><span class="line">git ls-files [-z][-t][-v](--cached|deleted|others|ignored|stage|unmerged|killed|modified)*(-[c|d|o|i|u|k|m])*</span><br><span class="line"></span><br><span class="line"># 默认查看所有缓存的文件</span><br><span class="line">git ls-files</span><br><span class="line"></span><br><span class="line">#查看未被跟踪的文件</span><br><span class="line">git ls-files -o</span><br><span class="line"></span><br><span class="line">#查看被修改的文件</span><br><span class="line">git ls-files --modified</span><br><span class="line"></span><br><span class="line"># 查看暂存区中文件详情</span><br><span class="line">git ls-files -s</span><br></pre></td></tr></table></figure></p>
+<h2 id="三、提交文件"><a href="#三、提交文件" class="headerlink" title="三、提交文件"></a>三、提交文件</h2><p>将工作区中的代码提交到本地仓库中有两种途径，第一种就是一步一步的来，先添加到暂存区，然后再提交到本地仓库。第二种是直接从工作区提交到本地仓库。<br>我们先看一下第一种路径。   </p>
+<h3 id="1、将文件添加到暂存区"><a href="#1、将文件添加到暂存区" class="headerlink" title="1、将文件添加到暂存区"></a>1、将文件添加到暂存区</h3><p>添加未跟踪或未修改的文件到暂存区，git命令如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 添加指定文件到暂存区</span><br><span class="line">git add [filename1] [filename2]...</span><br><span class="line"></span><br><span class="line"># 添加指定目录到暂存区，包括子目录</span><br><span class="line">git add [dirname]</span><br><span class="line"></span><br><span class="line"># 添加当前目录的所有文件到暂存区</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure></p>
+<h3 id="2、移除暂存区中的文件（撤销add操作）"><a href="#2、移除暂存区中的文件（撤销add操作）" class="headerlink" title="2、移除暂存区中的文件（撤销add操作）"></a>2、移除暂存区中的文件（撤销add操作）</h3><p>有的时候可能发现要提交的文件中有错误，但是已经添加到暂存区了，先在我想把它从暂存区中移除，这种情况该怎么办。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitb07.png" alt="gitb07.png"><br>有三种方法可以实现将文件从暂存区中移除。   </p>
+<h4 id="（1）、方法一：git-rm-–cached-filename1-filename2…"><a href="#（1）、方法一：git-rm-–cached-filename1-filename2…" class="headerlink" title="（1）、方法一：git rm –cached filename1 filename2…"></a>（1）、方法一：git rm –cached filename1 filename2…</h4><p>这种方法是将指定文件从暂存区中删除，并且不影响工作区的文件。<br><strong>git rm的相关扩展</strong>   </p>
+<ul>
+<li>git rm filename,不但从暂存区中删除，同时从工作区中删除</li>
+<li>git mv a.txt b.txt,把a.txt改名为b.txt</li>
+<li>git clean[options],移除所有未跟踪文件，一般会加上参数-df，-d表示包含目录，-f表示强制清除。</li>
+</ul>
+<h4 id="（2）、方法二：git-reset-HEAD-filename1，filename2…"><a href="#（2）、方法二：git-reset-HEAD-filename1，filename2…" class="headerlink" title="（2）、方法二：git reset HEAD filename1，filename2…"></a>（2）、方法二：git reset HEAD filename1，filename2…</h4><p>将指定的文件从暂存区回退到工作区，并且不影响工作区中的文件。也可以使用git reset filename。<br><strong>git reset的相关扩展</strong><br>其实git reset还可以做很多事情，下面我们来说一下通过reset实现版本回退。<br>git reset HEAD^：回退版本，一个^表示一个版本，可以多个，另外也可以使用git reset HEAD~n这种形式。（它有3个参数，分别是–soft，–mixed，–hard）</p>
+<ul>
+<li>带有–soft参数：git reset –soft HEAD~1表示将版本库软回退1个版本，所谓的软回退表示将本地版本库的头指针全部重置到指定版本，且将这次提交之后的所有变更都移动到暂存区。   </li>
+<li>默认的是mixed参数：git reset HEAD~1表示为版本库回退1个版本，将本地版本库的头指针全部重置到指定版本库，且重置暂存区，即这次提交之后的所有变更都移动到未暂存阶段。</li>
+<li>hart参数：git reset –hard HEAD~1表示将版本库回退1个版本，但是不仅仅将本地版本库的头指针全部重置到指定版本，也会重置到暂存区，并且也会将工作区代码回退到这个版本。<br>==注意soft参数与默认参数都不会修改工作区代码，只有hard参数才会修改工作区代码，所以要谨慎使用hard参数==   </li>
+</ul>
+<p>好了，现在我们已经知道了文件如何添加到暂存区了，接下来我们需要将文件从暂存区提交到本地仓库。   </p>
+<h4 id="（3）、方法三：git-checkout-–"><a href="#（3）、方法三：git-checkout-–" class="headerlink" title="（3）、方法三：git checkout –"></a>（3）、方法三：git checkout –<files></files></h4><p>git checkout –files把文件从暂存区域复制到工作目录，用来丢弃本地修改。当执行git checkout .或者git checkout –<files>命令时，会用暂存区全部或指定的文件替换工作区中的文件。   </files></p>
+<h3 id="3、commit命令提交文件到暂存区"><a href="#3、commit命令提交文件到暂存区" class="headerlink" title="3、commit命令提交文件到暂存区"></a>3、commit命令提交文件到暂存区</h3><p>commit命令有几种不同的用法：   </p>
+<ul>
+<li><strong>git commit [filename1 filename2…] -m[message]</strong>:提交暂存区中的文件到仓库，其中m表示备注信息。</li>
+<li><strong>git commit -a</strong>：提交工作区自上次commit之后的变化，直接到仓库区，跳过了add，对新文件无效。（这就是我们前面所说的路径一）</li>
+<li><strong>git commit -v</strong>：提交时显示所有的diff信息（什么是diff信息，后面会详细介绍）</li>
+<li><strong>git commit –amend [filename1 filename2…]-m[message]</strong>:使用一次新的commit，代替上一次提交，如果代码没有任何新的变化，则用来改写上一次commit的提交信息。  </li>
+</ul>
+<h4 id="（1）、关于diff"><a href="#（1）、关于diff" class="headerlink" title="（1）、关于diff"></a>（1）、关于diff</h4><p>我们知道可以通过git status来查看文件的状态，但是我们也只能查看文件处于什么状态，不能了解每个文件的内容具体做了哪些改动。那么我们如何查看文件修改后的差异呢？<br>可以通过git diff[files]命令可以比较工作区中的文件与暂存区中的文件具体差异。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitb08.png" alt="gitb08"><br>其中—a表示修改之前的文件，+++b表示修改之后的文件。    </p>
+<blockquote>
+<p>git diff –cached:比较暂存区的文件与之前已经提交过的文件</p>
+</blockquote>
+<p>当然你也可以把工作区中的状态和本地仓库中的状态进行diff，命令如下：  </p>
+<blockquote>
+<p>git diff HEAD~n,比较本地仓库与工作空间中的文件差异</p>
+</blockquote>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb09.png" alt="gitb09"></p>
+<h4 id="（2）、修正提交"><a href="#（2）、修正提交" class="headerlink" title="（2）、修正提交"></a>（2）、修正提交</h4><p>如果我们提交过后发现有个文件改错了，或者只是想修改提交说明，这时可以对相应的文件做出修改，将修改过的文件通过“git add”添加到暂存区，然后执行git commit –amend -m[message]</p>
+<h2 id="四、撤销提交"><a href="#四、撤销提交" class="headerlink" title="四、撤销提交"></a>四、撤销提交</h2><p>有时候我们提价了文件之后，发现有错误，不想提交了，想撤回。那么该怎样撤回之前的提交呢？撤销提交有三种方式，分别是reset、checkout和revert，下面我们将分别介绍这三种方法。（其实上checkout本质上并没有实现撤销提交，因为它根本没有改变HEAD指针，只是在某些情况下实现了撤销提交的效果）。      </p>
+<h3 id="1、方法一：git-reset"><a href="#1、方法一：git-reset" class="headerlink" title="1、方法一：git reset"></a>1、方法一：git reset</h3><p>reset的字面意思是“重置”，在介绍它之前我们先说一下几个概念。  </p>
+<h4 id="（1）、三棵树"><a href="#（1）、三棵树" class="headerlink" title="（1）、三棵树"></a>（1）、三棵树</h4><p>理解reset和checkout的最简单的方法，就是以Git的思维框架（将其作为内容管理器）来管理三棵不同的树。“树”在我们这里的实际意思是“文件的集合”，而不是指特定的数据结构。<br>Git作为一个系统，它以它的一般操作来管理并操纵这三棵树：<br>树|用途<br>–|—<br>HEAD|上一次提交的快照，下一次提交的父结点<br>Index|预期的下一次提交的快照<br>Working Directory|工作区</p>
+<p>HEAD：HEAD是当前分支引用的指针，它总是指向该分支的最后一次提交。这表示HEAD将是下一次提交的父结点。通常，理解HEAD的最简单方式，就是将它看做你的上一次提交的快照。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 显示了HEAD快照实际的目录列表</span><br><span class="line">$ git cat-file -p HEAD</span><br></pre></td></tr></table></figure></p>
+<p>Index：索引是你的“预期的下一次提交,暂存区域”，运行git add后，代码就进入“暂存区域”。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 显示出索引当前的样子</span><br><span class="line">$ git ls-files -s</span><br></pre></td></tr></table></figure></p>
+<p>Working Directory:可以把工作目录当做“沙盒”。在将修改提交到暂存区并记录暂存区并记录到历史之前，可以随意更改。   </p>
+<h4 id="（2）、重置的作用"><a href="#（2）、重置的作用" class="headerlink" title="（2）、重置的作用"></a>（2）、重置的作用</h4><p>将当前的分支重设（reset）到指定的<commit>或者HEAD（默认是HEAD，即最新的 一次提交），并且根据参数有可能更新index和working directory（默认是mixed）<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset [--hard|soft|mixed|merge|keep][commit|HEAD]</span><br></pre></td></tr></table></figure></commit></p>
+<p>有关–hard，–soft和–mixed参数之前我们已经提到了，这里我们简单的举例说一下。   </p>
+<ul>
+<li>–hard：重设index和working Directory，从<commit>以来在working directory中的任何改变都被丢弃，并把HEAD指向<commit>。  <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add a.txt</span><br><span class="line">$ git commit -m<span class="string">"add a.txt"</span></span><br><span class="line">$ git add b.txt</span><br><span class="line">$ git commit -m<span class="string">"add b.txt"</span></span><br><span class="line">$ git log --online  #查看日志</span><br></pre></td></tr></table></figure>
+</commit></commit></li>
+</ul>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb11.png" alt="gitb11"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --hard HEAD~<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb12.png" alt="gitb12"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git log --oneline</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb13.png"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status #没有任何内容</span><br></pre></td></tr></table></figure>
+<p>说明：第二次提交的b.txt已经被丢弃！HEAD指针重新指向了第一次提交的commitID。彻底回退到某个版本，本地的源码也会变为上一个版本的内容。   </p>
+<ul>
+<li>–soft：index和working directory中的内容不做任何改变，仅仅把HEAD指向<commit>。自从<commit>以来的所有改变都会显示在git status的“Changes to be commited”中。   <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add test1.txt</span><br><span class="line">$ git commit -m<span class="string">"add a.txt"</span></span><br><span class="line">$ git add test2.txt</span><br><span class="line">$ git commit -m<span class="string">"add b.txt"</span></span><br><span class="line">$ git log --online  #查看日志</span><br></pre></td></tr></table></figure>
+</commit></commit></li>
+</ul>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb14.png" alt="gitb14"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git reset --soft HEAD~1 #不会有任何提示</span><br><span class="line">$ git log --oneline</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb15.png" alt="gitb15"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb16.png" alt="gitb16"><br>说明：第二次提交的test2被重置到了“changes to be commited”中！HEAD指针重新指向了第一次提交的commitID。回退到某个版本，只回退了commit的信息。如果还要提交，直接commit即可。意思就是暂存区和工作区中的内容没有回退。   </p>
+<ul>
+<li>–mixed：仅仅重设index，但是不重设working directory。这个模式是默认模式，即当不显示告知git reset模式时，会使用mixed模式。这个模式的效果是，working directory中文件的修改都会被保留，不会丢失，但是也不会被标记成“Changes to be commited”,但是会打出什么还未被更新的报告。   <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ git add a.txt</span><br><span class="line">$ git commit -m<span class="string">"add a.txt"</span></span><br><span class="line">$ git add b.txt</span><br><span class="line">$ git commit -m<span class="string">"add b.txt"</span></span><br><span class="line">$ git log --oneline</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb17.png" alt="gitb17"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#不会有任何提示（默认方式，可以省略--mixed）</span><br><span class="line">$ git reset --mixed HEAD~<span class="number">1</span></span><br><span class="line">$ git log --oneline</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb18.png" alt="gitb18"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git status</span><br></pre></td></tr></table></figure>
+<p><img src="http://p6nfblqvu.bkt.clouddn.com/gitb19.png" alt="gitb19"><br>说明：第二次提交的b.txt被重置到了初始状态（上述示例为“Untracked”）HEAD指针重新指向了第一次提交的commitID。回退到某个版本，只保留源码，回退commit和index信息。   </p>
+<p>当然reset还可以用来解决冲突，这时候就需要使用另外两个模式了merge和keep。关于这一点我们会在分支那一块讲解。   </p>
+<h3 id="2、checkout实现撤销提交"><a href="#2、checkout实现撤销提交" class="headerlink" title="2、checkout实现撤销提交"></a>2、checkout实现撤销提交</h3><p>当执行“git checkout HEAD .”或者“git checkout HEAD <file>”命令时，会用HEAD指向的master分支中的全部或部分文件替换暂存区以及工作区中的文件。<strong>这个命令也是极具危险性的，因为不但会清除工作区中为提交的改动，也会清除暂存区中未提交的改动。</strong><br>这种做法就是我们经常说到了 <strong>检出</strong>，它也有很大的作用，比如说我们提交文件之后，在工作区继续书写代码，修改了很多地方，但是发现我们修改错了，想重新回到修改之前的样子，我们除了撤销提交之外还可以用检出，将本地仓库中的文件复制到暂存区和工作区中。     </file></p>
+<p>看起来checkout和git reset –hard HEAD~1有点像，但是它们本质是不一样的，前者只是从仓库中检出最新提交的当前所在分支的文件到暂存区和工作空间中,并没有改变HEAD指针，而后者则是将HEAD指向前一个commit，并且删除当前的commit。<br>所以checkout只是在某些情况下实现了撤销提交的效果，本质上是没有过撤销提交的。   </p>
+<h3 id="3、revert实现撤销提交"><a href="#3、revert实现撤销提交" class="headerlink" title="3、revert实现撤销提交"></a>3、revert实现撤销提交</h3><p>git revert也是撤销命令，它和reset的区别在于reset是指向原地或者向前移动指针，git revert是创建一个commit来覆盖当前的commit，指针向后移动。<br>git是撤销某次操作，此次操作之前的commit都会被保留。举一个例子：假设有三个提交（commit1，commit2，commit3），使用git status：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">commit3：add c.txt</span><br><span class="line">commit2: add b.txt</span><br><span class="line">commit1: add a.txt</span><br></pre></td></tr></table></figure></p>
+<p>当执行git revert HEAD~1时（撤销倒数第一个操作，指针向前移动一个），使用git log可以看出现在指针正在commit2上呢。   </p>
+<p>git revert的用法：  </p>
+<ul>
+<li>git revert HEAD:撤销前一次commit</li>
+<li>git revert HEAD^:撤销前前一次commit</li>
+<li>git revert commitID（比如：fa042ce57ebbe5bb9c8db709f719cec2c58ee7ff）撤销指定的版本，撤销也会作为一次提交进行报错。<br>当我们执行一次 git revert HEAD会发现先创建了一个commit并且工作区回退了一步。   </li>
+</ul>
+<ol>
+<li>git revert是用一次新的commit来回滚之前的commit，git reset是直接删除指定的commit。</li>
+<li>在回滚这一操作上看，效果差不多。但是在日后继续merge以前的老版本时有区别的。因为git revert是用一次逆向的commit“中和”之前的commit，因此日后合并老的branch时，导致这部分改变不会再次出现，但是git reset是把某些commit在某个branch上删除，因而和老的branch再次merge时，这些被回滚的commit应该还会被引入。  </li>
+<li>git reset是把HEAD向前移动了一下，而git是HEAD继续往后走，只是新的commit的内容和要revert的内容正好相反，能够抵消要被revert的内容。   </li>
+</ol>
+<p><strong>扩展：查看日志与历史</strong><br>上面我们用到了git log –oneline命令，我们现在就说一下日志相关的命令。命令格式如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 查看提交日志</span><br><span class="line">git log [&lt;options&gt;[&lt;revision range&gt;][\--]&lt;path&gt;...]</span><br></pre></td></tr></table></figure></p>
+<p>示例：<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitb20.png" alt="gitb20"></p>
+<p>git log –graph:表示以图形化的方式显示提交历史的关系，这就可以方便地查看提交历史的分支信息，当然是控制台用字符画出来的图形。<br>“git log -1”则表示显示1行。<br>更多关于git log的用法这里不展开讲了，只简单提一下这几个常用到的。</p>
+<h2 id="五、创建忽略文件"><a href="#五、创建忽略文件" class="headerlink" title="五、创建忽略文件"></a>五、创建忽略文件</h2><p>这个就很简单了，有时候我们不想把某些文件纳入版本控制中，想在提交的时候把一些不想提交的文件跳过。<br>比如我在使用node开发一个小的应用，但是用到了很多第三方模块，当我提交到远程仓库的时候，如果我把整个项目都提交上去，如果这些第三方模块体积很大的话，再加上网很慢的情况，可能我出去喝杯咖啡回来都还没提交完呢。<br>所以我们可以把这些模块文件都忽略掉，在package文件中列一个模块清单就可以。<br>那怎样忽略这些文件呢？<br>我们需要创建一个名为”.gitignore”的文件，这个文件的规则如下：   </p>
+<ol>
+<li>文中的空行或以井号（#）开始的行将会被忽略。</li>
+<li>可以使用Linux通配符。例如：星号*代表任意多个字符，问号（？）代表一个字符，方括号（[abc]）代表可选字符范围，大括号（{string1，string2…}）代表可选的字符串等。</li>
+<li>如果名称的最前面有一个叹号（！），表示例外规则，将不被忽略。  </li>
+<li>如果名称的最前面是一个路分隔符（/）,表示要忽略的文件在此目录下，而子目录中的文件不忽略。</li>
+<li>如果名称的最后面是一个路径分隔符（/）,表示要忽略的是此目录下该文件名称的子目录，而非文件（默认文件或目录都忽略）。</li>
+</ol>
+<p>示例：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">*.txt <span class="comment">//忽略所有.txt结尾的文件</span></span><br><span class="line">!lib.txt <span class="comment">//但是除了lib.txt</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//仅忽略项目根目录下的TODO文件,不包括其它目录temp</span></span><br><span class="line">/temp</span><br><span class="line"></span><br><span class="line"><span class="comment">//忽略build/目录下的所有文件</span></span><br><span class="line">build/</span><br><span class="line"></span><br><span class="line"><span class="comment">//会忽略 doc/notes.txt 但不包括 doc/server/arch.txt</span></span><br></pre></td></tr></table></figure></p>
+<p>更多的规则请看<a href="http://www.cnblogs.com/kevingrace/p/5690241.html" target="_blank" rel="noopener">这里</a></p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>本文介绍了文件的不同操作，包括添加到暂存区，提交文件，撤销提交等等，后面的文件我们将介绍git中比较重要的块：<a href="/版本控制工具/git学习笔记（三）/" title="git中的分支">git中的分支</a>  </p>
 
       
     </div>
@@ -677,7 +795,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、创建Git仓库"><span class="nav-number">1.</span> <span class="nav-text">一、创建Git仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Git文件操作"><span class="nav-number">2.</span> <span class="nav-text">二、Git文件操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、查看文件状态"><span class="nav-number">2.1.</span> <span class="nav-text">1、查看文件状态</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、添加文件或目录到暂存区"><span class="nav-number">2.2.</span> <span class="nav-text">2、添加文件或目录到暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、移除暂存区中的文件或目录（撤销add操作）"><span class="nav-number">2.3.</span> <span class="nav-text">3、移除暂存区中的文件或目录（撤销add操作）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、创建Git仓库"><span class="nav-number">1.</span> <span class="nav-text">一、创建Git仓库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、查看文件状态"><span class="nav-number">2.</span> <span class="nav-text">二、查看文件状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、提交文件"><span class="nav-number">3.</span> <span class="nav-text">三、提交文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、将文件添加到暂存区"><span class="nav-number">3.1.</span> <span class="nav-text">1、将文件添加到暂存区</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、移除暂存区中的文件（撤销add操作）"><span class="nav-number">3.2.</span> <span class="nav-text">2、移除暂存区中的文件（撤销add操作）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）、方法一：git-rm-–cached-filename1-filename2…"><span class="nav-number">3.2.1.</span> <span class="nav-text">（1）、方法一：git rm –cached filename1 filename2…</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）、方法二：git-reset-HEAD-filename1，filename2…"><span class="nav-number">3.2.2.</span> <span class="nav-text">（2）、方法二：git reset HEAD filename1，filename2…</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（3）、方法三：git-checkout-–"><span class="nav-number">3.2.3.</span> <span class="nav-text">（3）、方法三：git checkout –</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、commit命令提交文件到暂存区"><span class="nav-number">3.3.</span> <span class="nav-text">3、commit命令提交文件到暂存区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）、关于diff"><span class="nav-number">3.3.1.</span> <span class="nav-text">（1）、关于diff</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）、修正提交"><span class="nav-number">3.3.2.</span> <span class="nav-text">（2）、修正提交</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、撤销提交"><span class="nav-number">4.</span> <span class="nav-text">四、撤销提交</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、方法一：git-reset"><span class="nav-number">4.1.</span> <span class="nav-text">1、方法一：git reset</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#（1）、三棵树"><span class="nav-number">4.1.1.</span> <span class="nav-text">（1）、三棵树</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#（2）、重置的作用"><span class="nav-number">4.1.2.</span> <span class="nav-text">（2）、重置的作用</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、checkout实现撤销提交"><span class="nav-number">4.2.</span> <span class="nav-text">2、checkout实现撤销提交</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、revert实现撤销提交"><span class="nav-number">4.3.</span> <span class="nav-text">3、revert实现撤销提交</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、创建忽略文件"><span class="nav-number">5.</span> <span class="nav-text">五、创建忽略文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">6.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>

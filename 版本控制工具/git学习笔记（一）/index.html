@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita04.png">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita05.png">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gita06.png">
-<meta property="og:updated_time" content="2018-04-04T07:08:04.454Z">
+<meta property="og:updated_time" content="2018-04-06T07:36:48.576Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git学习笔记（一）">
 <meta name="twitter:description" content="前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。">
@@ -403,7 +403,7 @@
       
 
       
-        <p><img src="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg" width="600" alt="image"></p>
+        <p><img src="http://p6nfblqvu.bkt.clouddn.com/image/gitgit.jpg" width="600" alt="git"></p>
 <p>前言:在去年这个时候就已经开始使用git来管理代码了。但仅仅只会平时开发中经常遇几个git命令，对于其中的具体工作原理不大清楚。所以当遇到问题时，解决思路经常是模糊的。所以就抽时间认真地学习了一遍。俗话说的好，最好的学就是教。本文是参考了前辈们的文章根据自己理解写的一个git学习总结,有出错的地方希望大家多多纠正。<br><a id="more"></a></p>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ol>
 <li><a href="/版本控制工具/git学习笔记（一）/" title="git学习笔记（一）—git概述">git学习笔记（一）—git概述</a>  </li>
@@ -478,6 +478,7 @@
 <p>只需要做一次这个个设置，如果你传递了–global选项，因为Git将总是会使用该信息来处理你在系统中所做的一切操作。如果你希望在一个特定的项目中使用不同的名称和e-mail诋毁，你可以在该项目中运行命令而不要–global选项。总之–global为全局配置，不加则为某个项目的特定配置。   </p>
 <h3 id="4、添加或删除配置项"><a href="#4、添加或删除配置项" class="headerlink" title="4、添加或删除配置项"></a>4、添加或删除配置项</h3><p><strong>添加配置项：git config [–local|–global|–system] section.key value</strong><br>其中[–local|–global|–system]是可选的，对本地，全局，系统不同级别的设置<br>section.key是区域下的键<br>value是对应的键值<br>例如我们要在student区域下添加一个名称为height值为198的配置项：<br>git config –system student.height 198   </p>
 <p><strong>删除配置项：git config [–local|–global|–system] –unset section.key</strong><br>比如将系统级的height配置项移除：<br>git config –system –unset student.height<br>还有其他更多的配置项，可以通过git config –list来查看。   </p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>这篇文章主要介绍了版本控制系统的一些概念，还有git系统中的一些理论知识，希望大家可以对版本控制系统有一个简单的认识。后面我们将会介绍<a href="/版本控制工具/git学习笔记（二）/" title="git中的文件操作">git中的文件操作</a>  </p>
 
       
     </div>
@@ -712,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、关于版本控制"><span class="nav-number">2.</span> <span class="nav-text">一、关于版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、本地版本控制系统"><span class="nav-number">2.1.</span> <span class="nav-text">1、本地版本控制系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、集中式版本控制系统"><span class="nav-number">2.2.</span> <span class="nav-text">2、集中式版本控制系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、分布式版本控制系统"><span class="nav-number">2.3.</span> <span class="nav-text">3、分布式版本控制系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Git工作原理"><span class="nav-number">3.</span> <span class="nav-text">二、Git工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Git工作区域"><span class="nav-number">3.1.</span> <span class="nav-text">1.Git工作区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Git整体工作流程"><span class="nav-number">3.2.</span> <span class="nav-text">2.Git整体工作流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Git的安装和配置"><span class="nav-number">4.</span> <span class="nav-text">三、Git的安装和配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-下载安装Git"><span class="nav-number">4.1.</span> <span class="nav-text">1.下载安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Git配置"><span class="nav-number">4.2.</span> <span class="nav-text">2、Git配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、设置用户名与邮箱（用户标识，必要）"><span class="nav-number">4.3.</span> <span class="nav-text">3、设置用户名与邮箱（用户标识，必要）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、添加或删除配置项"><span class="nav-number">4.4.</span> <span class="nav-text">4、添加或删除配置项</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#目录"><span class="nav-number">1.</span> <span class="nav-text">目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一、关于版本控制"><span class="nav-number">2.</span> <span class="nav-text">一、关于版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、本地版本控制系统"><span class="nav-number">2.1.</span> <span class="nav-text">1、本地版本控制系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、集中式版本控制系统"><span class="nav-number">2.2.</span> <span class="nav-text">2、集中式版本控制系统</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、分布式版本控制系统"><span class="nav-number">2.3.</span> <span class="nav-text">3、分布式版本控制系统</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、Git工作原理"><span class="nav-number">3.</span> <span class="nav-text">二、Git工作原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Git工作区域"><span class="nav-number">3.1.</span> <span class="nav-text">1.Git工作区域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Git整体工作流程"><span class="nav-number">3.2.</span> <span class="nav-text">2.Git整体工作流程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、Git的安装和配置"><span class="nav-number">4.</span> <span class="nav-text">三、Git的安装和配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-下载安装Git"><span class="nav-number">4.1.</span> <span class="nav-text">1.下载安装Git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、Git配置"><span class="nav-number">4.2.</span> <span class="nav-text">2、Git配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、设置用户名与邮箱（用户标识，必要）"><span class="nav-number">4.3.</span> <span class="nav-text">3、设置用户名与邮箱（用户标识，必要）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、添加或删除配置项"><span class="nav-number">4.4.</span> <span class="nav-text">4、添加或删除配置项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#小结"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
             
 
           </div>
