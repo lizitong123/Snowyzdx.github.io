@@ -91,16 +91,31 @@
 
 
 
+<meta name="description" content="分支是git中非常重要的一块，同时在我们开发过程中对我们团队开发起到了很大的促进作用。那么何为分支？在我们开发中是如何使用分支的？">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git学习笔记（三）">
 <meta property="og:url" content="http://www.github.com/Asiazdx/版本控制工具/git学习笔记（三）/index.html">
 <meta property="og:site_name" content="Snowy&#39;blog">
+<meta property="og:description" content="分支是git中非常重要的一块，同时在我们开发过程中对我们团队开发起到了很大的促进作用。那么何为分支？在我们开发中是如何使用分支的？">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc.png">
-<meta property="og:updated_time" content="2018-04-06T07:36:29.087Z">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc01.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc01.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc03.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc04.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc05.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc06.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc11.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc07.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc08.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc09.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc12.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc10.png">
+<meta property="og:updated_time" content="2018-04-07T13:46:23.489Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git学习笔记（三）">
+<meta name="twitter:description" content="分支是git中非常重要的一块，同时在我们开发过程中对我们团队开发起到了很大的促进作用。那么何为分支？在我们开发中是如何使用分支的？">
 <meta name="twitter:image" content="http://p6nfblqvu.bkt.clouddn.com/gitc.png">
 
 
@@ -394,7 +409,30 @@
       
 
       
-        <p><img src="http://p6nfblqvu.bkt.clouddn.com/gitc.png" width="600" alt="gitc"> </p>
+        <p><img src="http://p6nfblqvu.bkt.clouddn.com/gitc.png" width="600" alt="gitc"><br>分支是git中非常重要的一块，同时在我们开发过程中对我们团队开发起到了很大的促进作用。<br>那么何为分支？在我们开发中是如何使用分支的？<br><a id="more"></a></p>
+<h2 id="一、分支的概述"><a href="#一、分支的概述" class="headerlink" title="一、分支的概述"></a>一、分支的概述</h2><p>假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没有写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，有存在丢失每天进度的巨大风险。<br>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上，这样，即安全，又不影响别人工作。<br>可见使用分支的目的就是可以把你的工作从开发主线上分离开来，以免影响开发主线。其他很多版本控制系统中都有某种形式支持的分支。但是这些系统对分支这一块的实现不是很好（几乎是完全创建一个源码目录的副本），效率比较低。<br>git中的分支很轻，创建一个新的分支是瞬间可以完成的事情，不同分支之间的切换也是非常便捷的。所以很多开发者在使用git进行版本控制的时候是很愿意去使用分支的。<br>git中的分支是如何实现的呢？下面就介绍一下其中的基本流程。   </p>
+<h3 id="1、Git中分支的实现"><a href="#1、Git中分支的实现" class="headerlink" title="1、Git中分支的实现"></a>1、Git中分支的实现</h3><p>我们知道git保存的不是文件的变化或者差异，而是一系列不同时刻的文件快照。在进行提交时，git会保存一个提交对象（git学习笔记（一）中有提到）。这个提交对象包含了很多的信息，其中就有一个指向暂存区内容快照的指针。首次提交产生的提交对象没有父对象，普通提交操作产生的提交对象会有父对象，由多个分支合并产生的提交对象有多个父对象。    </p>
+<blockquote>
+<p>git分支，其实仅仅是指向提交对象的可变指针。git的默认分支名字是master。在多次提交操作之后，你其实已经有一个指向最后那个提交对象的master分支。它会在每次提交操作中自动向前移动。<br>git的“master”分支并不是一个特殊分支，它就跟其他分支完全没有区别。之所以几乎每个仓库都有master分支，是因为git init命令默认创建它，并且大多数人都懒得改动它。   </p>
+</blockquote>
+<p>通俗的讲，我们可以把分支理解成时间轴，在没有创建任何分支的时候我们只有一个分支即master主分支，master指向提交，HEAD指向的是master（指向当前分支）。每次提交后，master分支都会往下走一步。提交的次数越多，这个时间轴就会越长。当新建一个分支时，<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc01.png" alt="gitc02"></p>
+<h2 id="二、创建分支与切换分支"><a href="#二、创建分支与切换分支" class="headerlink" title="二、创建分支与切换分支"></a>二、创建分支与切换分支</h2><h3 id="1、新建一个分支，但是仍然停留在当前分支"><a href="#1、新建一个分支，但是仍然停留在当前分支" class="headerlink" title="1、新建一个分支，但是仍然停留在当前分支"></a>1、新建一个分支，但是仍然停留在当前分支</h3><p><strong>git branch [branch-name][commit]</strong><br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc01.png" alt="gitc01"><br>创建一个分支dev01，可以把dev01看成一个指针，指向master相同的提交，但是HEAD现在还是指向master，表示当前分支还是在master上。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc03.png" alt="gitc03"><br>新建分支时，可以指向指定commit使用命令：<br><strong>git branch branch-name commitID</strong>   </p>
+<h3 id="2、新建一个分支并切换到该新的分支"><a href="#2、新建一个分支并切换到该新的分支" class="headerlink" title="2、新建一个分支并切换到该新的分支"></a>2、新建一个分支并切换到该新的分支</h3><p><strong>git checkout -b dev</strong><br>创建一个分支dev，改变HEAD的指向，工作区中的文件并没有发生任何变化。不过从现在开始，对工作区的修改和提交就是针对dev02分支的，比如新提交一次后，dev的指针往前移动一步，而master指针不变。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc04.png" alt="gitc04"></p>
+<h3 id="3、只切换分支"><a href="#3、只切换分支" class="headerlink" title="3、只切换分支"></a>3、只切换分支</h3><p><strong>git checkout [branch-name]</strong><br>切换到指定分支，并更新工作区。<br><strong>git checkout -</strong><br>切换到上一个分支   </p>
+<h3 id="4、新建一个分支与远程分支建立追踪关系"><a href="#4、新建一个分支与远程分支建立追踪关系" class="headerlink" title="4、新建一个分支与远程分支建立追踪关系"></a>4、新建一个分支与远程分支建立追踪关系</h3><p><strong>git branch –track [branch][remote-branch]</strong><br>关于远程分支，现在先不展开讲了，后面会在远程仓库中介绍。</p>
+<h2 id="三、查看分支"><a href="#三、查看分支" class="headerlink" title="三、查看分支"></a>三、查看分支</h2><ol>
+<li><strong>git branch</strong>：列出所有本地分支</li>
+<li><strong>git branch -r</strong>: 列出所有远程分支</li>
+<li><strong>git branch -a</strong>: 列出所有本地和远程的分支<h2 id="四、分支合并"><a href="#四、分支合并" class="headerlink" title="四、分支合并"></a>四、分支合并</h2><strong>git merge [branch]</strong><br>合并指定分支到当前分支。<br>比如我们创建了一个新的分支dev，并且切换到当前分支。在当前分支中我们对a.txt文件进行了修改。当我们切换回master分支后，再查看a.txt文件，发现刚才修改的内容不见了。因为那个提交是在dev分支上，而master分支此刻的提交点并没有改变：<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc05.png" alt="gitc05"><br>现在，我们把dev分支的工作成果合并到master分支上:<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc06.png" alt="gitc06"><br>注意在合并分支的时候先要切换到master分支上。因为git merge命令合并指定分支到当前分支。合并后，再查看a.txt的内容，就可以看到和dev分支的最新提交是完全一样的。<br>注意到上面的Fast-forward信息，表示这次合并时“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。（不是每次合并都是这种模式）。其他的方式我们后面再说。<br>合并完之后我们就可以放心地删除dev分支了。<br><strong>git branch -d dev</strong><br>删除之后就只剩下master分支了<h2 id="五、解决冲突"><a href="#五、解决冲突" class="headerlink" title="五、解决冲突"></a>五、解决冲突</h2>如果同一个文件在合并分支时都被修改了则会引起冲突。<br>下面借鉴阮一峰老师的例子，说一些如何解决冲突。   </li>
+</ol>
+<p>先准备一个新dev分支：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout -b dev</span><br></pre></td></tr></table></figure>
+<p>修改a.txt的内容，改为：“a hello second”<br>在dev分支上提交：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add a.txt</span><br><span class="line">$ git commit -m<span class="string">"update"</span></span><br></pre></td></tr></table></figure></p>
+<p>切换到master分支上：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git checkout master</span><br></pre></td></tr></table></figure></p>
+<p>在master分支上把a.txt文件中的内容修改一下：“a hello thrid”<br>在master上提交：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add a.txt</span><br><span class="line">$ git commit -m<span class="string">"update"</span></span><br></pre></td></tr></table></figure></p>
+<p>现在，master分支和dev分支各自都分别有新的提交，变成了这样：<br> <img src="http://p6nfblqvu.bkt.clouddn.com/gitc11.png" alt="gitc11"><br> 这种情况下，git无法执行“快速合并”，只能试图把各自修改合并起来，但这种合并就可能会有冲突，我们试试看：<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc07.png" alt="gitc07"><br>果然冲突了，git显示a.txt文件存在冲突，必须手动解决冲突后再提交。git status也可以告诉我们冲突的文件：<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc08.png" alt="gitc08"><br>我们可以直接查看a.txt文件的内容：<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc09.png" alt="gitc09"><br>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容我们修改如下后保存：“a hello thrid”<br>再提交：<br>现在，master分支和dev分支变成如下：<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc12.png" alt="gitc12"><br>用带参数的git log也可以看到分支的合并的情况：<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitc10.png" alt="gitc10"><br>最后，删除dev分支：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git branch -d dev</span><br></pre></td></tr></table></figure></p>
+<p><strong>小结</strong>：当git无法自动合并分支时，就必须首先解决冲突，解决冲突之后，再提交，合并完成。<br>用git log –graph命令可以看到分支合并图。   </p>
+<h2 id="六、分支管理策略"><a href="#六、分支管理策略" class="headerlink" title="六、分支管理策略"></a>六、分支管理策略</h2><p>master主分支应该是非常稳定，用来发布新版本，一般情况下不允许在上面工作，工作一般情况下在新建的dev分支上工作，工作完后，dev分支代码稳定后就可以合并到主分支master上了。   </p>
 
       
     </div>
@@ -521,8 +559,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -614,6 +661,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、分支的概述"><span class="nav-number">1.</span> <span class="nav-text">一、分支的概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、Git中分支的实现"><span class="nav-number">1.1.</span> <span class="nav-text">1、Git中分支的实现</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、创建分支与切换分支"><span class="nav-number">2.</span> <span class="nav-text">二、创建分支与切换分支</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、新建一个分支，但是仍然停留在当前分支"><span class="nav-number">2.1.</span> <span class="nav-text">1、新建一个分支，但是仍然停留在当前分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、新建一个分支并切换到该新的分支"><span class="nav-number">2.2.</span> <span class="nav-text">2、新建一个分支并切换到该新的分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、只切换分支"><span class="nav-number">2.3.</span> <span class="nav-text">3、只切换分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、新建一个分支与远程分支建立追踪关系"><span class="nav-number">2.4.</span> <span class="nav-text">4、新建一个分支与远程分支建立追踪关系</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、查看分支"><span class="nav-number">3.</span> <span class="nav-text">三、查看分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、分支合并"><span class="nav-number">4.</span> <span class="nav-text">四、分支合并</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、解决冲突"><span class="nav-number">5.</span> <span class="nav-text">五、解决冲突</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、分支管理策略"><span class="nav-number">6.</span> <span class="nav-text">六、分支管理策略</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
