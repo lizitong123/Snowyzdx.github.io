@@ -91,16 +91,24 @@
 
 
 
+<meta name="description" content="git远程仓库也是我们平时开发工作中重要的一块。我们经常用到的代码托管平台就是github，gitLab也经常会用到。">
 <meta name="keywords" content="git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git学习笔记（四）">
 <meta property="og:url" content="http://www.github.com/Asiazdx/版本控制工具/git学习笔记（四）/index.html">
 <meta property="og:site_name" content="Snowy&#39;blog">
+<meta property="og:description" content="git远程仓库也是我们平时开发工作中重要的一块。我们经常用到的代码托管平台就是github，gitLab也经常会用到。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitd.png">
-<meta property="og:updated_time" content="2018-04-06T07:36:22.048Z">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitd01.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitd02.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitd03.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitd04.png">
+<meta property="og:image" content="http://p6nfblqvu.bkt.clouddn.com/gitd05.png">
+<meta property="og:updated_time" content="2018-04-08T12:54:02.541Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git学习笔记（四）">
+<meta name="twitter:description" content="git远程仓库也是我们平时开发工作中重要的一块。我们经常用到的代码托管平台就是github，gitLab也经常会用到。">
 <meta name="twitter:image" content="http://p6nfblqvu.bkt.clouddn.com/gitd.png">
 
 
@@ -394,8 +402,153 @@
       
 
       
-        <p><img src="http://p6nfblqvu.bkt.clouddn.com/gitd.png" width="600" alt="gitd"></p>
-
+        <p><img src="http://p6nfblqvu.bkt.clouddn.com/gitd.png" width="600" alt="gitd"><br>git远程仓库也是我们平时开发工作中重要的一块。我们经常用到的代码托管平台就是github，gitLab也经常会用到。<br><a id="more"></a><br>关于远程仓库没有什么过多的解释的，它和本地仓库没有什么区别，只是一个放在远程服务器的仓库。因为我们不可能一直把代码存放在本地电脑中，万一哪一天你的硬盘坏了，后果不堪设想。额，其实在我不懂事的年纪就吃过这样的亏，当时真的想抱着电脑跳护城河了（无奈）。<br>所以学会怎么使用远程仓库你就不用担心这些问题了。<br>本文介绍的更多是如何通过命令来完成本地仓库和远程仓库之间的交流。嗯~，看来还是得放图。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitd01.png" alt="gitd01"><br>可见远程仓库的相关操作无非就是推送、拉取、建立追踪、查看、移除，添加等常用的操作。  </p>
+<p>当然在这之前你要学会怎么使用github，用法很简单，都有相关教程,看<a href="https://github.com/" target="_blank" rel="noopener">官网</a>就可以了。   </p>
+<h2 id="一、git-clone命令"><a href="#一、git-clone命令" class="headerlink" title="一、git clone命令"></a>一、git clone命令</h2><p>在工作过程中，一个团队项目，通常是主工程师先在远程服务器中创建一个版本库，然后队员把这个远程版本库克隆到本地电脑上，然后进行开发。这时就要用到了git clone命了。<br>语法格式：   </p>
+<blockquote>
+<p>$ git clone &lt;版本库的网址&gt;</p>
+</blockquote>
+<p>执行完之后会在本地电脑中生成一个与远程版本库同名的目录。如果要指定不同的目录名，可以通过git clone中的第二个参数改变。   </p>
+<blockquote>
+<p>$ git clone &lt;版本库的网址&gt; &lt;本地目录名&gt;</p>
+</blockquote>
+<p>git clone支持多种协议：   </p>
+<blockquote>
+<p>$ git clone http[s]://example.com/path/to/repo.git/<br> $ git clone ssh://example.com/path/to/repo.git/<br> $ git clone git://example.com/path/to/repo.git/<br> $ git clone /opt/git/project.git<br> $ git clone file:///opt/git/project.git<br> $ git clone ftp[s]://example.com/path/to/repo.git/<br> $ git clone rsync://example.com/path/to/repo.git/</p>
+</blockquote>
+<p>其中git协议下载最快。ssh协议还有另外一种写法：  </p>
+<blockquote>
+<p>$ git clone [user@]exapmle.com:path/to/repo.git</p>
+</blockquote>
+<p>ssh协议用于需要用户认证的场合，各种协议的区别请查看<a href="https://git-scm.com/book/en/v2/Git-on-the-Server-The-Protocols" target="_blank" rel="noopener">官网</a></p>
+<p>我在我的github上新建了一个名叫gitTest的远程仓库，现在使用git clone命令克隆到本地。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git clone https:<span class="comment">//github.com/Snowyzdx/gitTest.git</span></span><br></pre></td></tr></table></figure></p>
+<p>发现在本地的当前目录下多个一个gitTest目录，进入到这个gitTest目录。  </p>
+<h2 id="二、git-remote"><a href="#二、git-remote" class="headerlink" title="二、git remote"></a>二、git remote</h2><p>git remote命令用于查看远程主机的名称，接着上一节，我们在gitTest目录下执行git remote命令。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitd02.png" alt="gitd02"></p>
+<h3 id="1-git-remote-v"><a href="#1-git-remote-v" class="headerlink" title="1.git remote-v"></a>1.git remote-v</h3><p>可以使用 <strong>git remote -v</strong> 查看远程主机的网址。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitd03.png" alt="gitd03"><br>有两个地址，fetch是读，push是写。</p>
+<h3 id="2-git-remote-o"><a href="#2-git-remote-o" class="headerlink" title="2.git remote -o"></a>2.git remote -o</h3><p>在克隆版本库的时候，所使用的远程主机自动被git命名为origin。如果想用其他的主机名，需要用git clone命令的-o选项指定。   </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git clone -o test https:<span class="comment">//github.com/Snowyzdx/newRepro.git</span></span><br><span class="line">$ git remote</span><br><span class="line">test</span><br></pre></td></tr></table></figure>
+<p>上面命令表示，克隆的时候，指定远程主机叫做test。  </p>
+<h3 id="3-git-remote-show-lt-主机名-gt"><a href="#3-git-remote-show-lt-主机名-gt" class="headerlink" title="3.git remote show &lt;主机名&gt;"></a>3.git remote show &lt;主机名&gt;</h3><p>git remote show命令加上主机名，可以查看该主机的详细信息。<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitd04.png" alt="gitd04"></p>
+<h3 id="4-git-remote-add"><a href="#4-git-remote-add" class="headerlink" title="4.git remote add"></a>4.git remote add</h3><p><strong>git remote add &lt;主机名&gt; &lt;网址&gt;</strong> 用于添加远程主机，有时候我们在本地建立好了本地仓库，并且把代码都提交到本地仓库中了，想把本地仓库与远程仓库建立<br>连接，将这些代码推送到远程仓库中。这个时候就用到git remote add 命令了。      </p>
+<ol>
+<li><p>我在本地电脑上创建了一个本地仓库,并且新建一个文件a.txt</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git init test1</span><br><span class="line">$ git echo hello git&gt;a.txt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>然后将所有的内容提交到本地仓库中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git add .</span><br><span class="line">$ git commit -m<span class="string">"add a.txt"</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在github上创建一个远程仓库，命名为testa</p>
+</li>
+<li>将本地仓库与远程仓库建立连接<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git remote add origin https:<span class="comment">//github.com/Snowyzdx/testa.testa.git</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>注意，在你自己测试的时候这里的远程仓库地址换成自己github上的地址。   </p>
+<ol start="5">
+<li>建立连接之后就可以向远程仓库推送本地仓库中的内容了<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git push -u origin master</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>执行结果如下：<br><img src="http://p6nfblqvu.bkt.clouddn.com/gitd05.png" alt="gitd05"></p>
+<h3 id="5-git-remote-rm"><a href="#5-git-remote-rm" class="headerlink" title="5.git remote rm"></a>5.git remote rm</h3><p><strong>git remote rm &lt;主机名&gt;</strong> 用于删除远程主机。</p>
+<h3 id="6-git-remote-rename"><a href="#6-git-remote-rename" class="headerlink" title="6.git remote rename"></a>6.git remote rename</h3><p><strong>git remote rename &lt;原主机名&gt; &lt;新主机名&gt;</strong> 命令用于远程主机改名</p>
+<h2 id="三、git-fetch"><a href="#三、git-fetch" class="headerlink" title="三、git fetch"></a>三、git fetch</h2><p>在团队开发中，如果别的队员向远程主机的仓库中提交最新的代码，或者主工程师对master分支进行了修改，这时候远程主机的仓库有了更新，我们需要将这些跟新取回本地，就要用到git fetch命令。   </p>
+<blockquote>
+<p>$ git fetch &lt;远程主机名&gt;</p>
+</blockquote>
+<p>上面命令将远程主机的更新，全部取回本地。<br>git fetch命令通常用来查看其他人的进程，因为它取回的代码对你本地的开发代码没有影响。<br>默认情况下，git fetch取回所有分支（branch）的更新。如果只想取回特定分支的更新，可以指定分支名。   </p>
+<blockquote>
+<p>$ git fetch &lt;远程主机名&gt; &lt;分支名&gt;</p>
+</blockquote>
+<p>比如，取回origin主机的master分支。   </p>
+<blockquote>
+<p>$ git fetch origin master</p>
+</blockquote>
+<p>所取回的更新，在本地主机上要用“远程主机名/分支名”的形式读取。比如origin主机的master，就要用origin/master读取。<br>可以使用前面加到到git branch -a命令查看远程和本地分支。<br>取回远程主机的更新以后，可以在它的基础上，使用git checkout命令创建一个新的分支。   </p>
+<blockquote>
+<p>$ git checkout -b newBranch origin/master</p>
+</blockquote>
+<p>此外，也可以使用git merge命令或者git rebase命令，在本地分支上合并远程分支。   </p>
+<blockquote>
+<p>$ git merge origin/master<br>$ git rebase origin/master</p>
+</blockquote>
+<p>表示在当前分支上合并origin/master</p>
+<h2 id="四、git-pull"><a href="#四、git-pull" class="headerlink" title="四、git pull"></a>四、git pull</h2><p>git pull表示取回远程主机某个分支的更新，再与本地的指定的分支合并。它的完整格式如下：   </p>
+<blockquote>
+<p>$ git pull &lt;远程主机名&gt; &lt;远程分支&gt;：&lt;本地分支名&gt;</p>
+</blockquote>
+<p>比如，取回origin主机的next分支，与本地分支master分支合并，需要这样写：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin next:master</span><br></pre></td></tr></table></figure></p>
+<p>如果远程分支是与当前分支合并，则冒号后面的部分可以省略。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git pull origin next</span><br></pre></td></tr></table></figure></p>
+<p>上面命令表示，取回origin/next分支，在与当前分支合并。实际上，这等于先做git fetch，再做git merge</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git fetch origin</span><br><span class="line">$ git merge origin/next</span><br></pre></td></tr></table></figure>
+<p>在某些场合，Git会自动在本地分支与远程分支之间，建立一种追踪（tracking）。比如在git clone的时候，所哟地址分支默认与远程主机的同名分支建立追踪关系，也就是说，本地的master分支自动“追踪”origin/master分支。   </p>
+<p>git也允许手动建立追踪关系：  </p>
+<blockquote>
+<p>$ git branch –set-upstream mmaster origin/next</p>
+</blockquote>
+<p>上面的命令指定master分支追踪origin/next分支。<br>如果当前分支与远程分支存在追踪关系，git pull就可以省略远程分支名。  </p>
+<blockquote>
+<p>$ git pull origin</p>
+</blockquote>
+<p>上面命令表示，本地的当前分支自动与对应的origin主机“追踪分支”（remote-tracking branch）进行合并。<br>如果当前分支只有一个追踪分支，；连远程主机名都可以省略。   </p>
+<blockquote>
+<p>$ git pull</p>
+</blockquote>
+<p>上面命令表示，当前分支自动与唯一一个追踪分支进行合并。   </p>
+<p>如果合并需要rebase模式，可以使用–rebase选项。   </p>
+<blockquote>
+<p>$ git pull –rebase &lt;远程主机名&gt; &lt;远程分支名&gt;:&lt;本地分支名&gt;</p>
+</blockquote>
+<p>如果远程主机删除了某个分支，默认情况下，git pull不会在拉去远程分支的时候，删除对应的本地分支。这是为了防止，由于某人操作了远程主机，导致git pull不知不觉删除了本地分支。<br>但是，你可以改变这个行为，加上参数-p就会在本地删除远程已经删除的分支。   </p>
+<blockquote>
+<p>$ git pull -p</p>
+</blockquote>
+<h1 id="等同于下面的命令"><a href="#等同于下面的命令" class="headerlink" title="等同于下面的命令"></a>等同于下面的命令</h1><p>  $ git fetch –prune origin<br>  $ git fetch -p</p>
+<h3 id="扩展（关于rebase模式）"><a href="#扩展（关于rebase模式）" class="headerlink" title="扩展（关于rebase模式）"></a>扩展（关于rebase模式）</h3><h2 id="五、git-push"><a href="#五、git-push" class="headerlink" title="五、git push"></a>五、git push</h2><p>git push命令用于将本地分支的更新，推送到远程主机。它的格式与git pull命令相仿。  </p>
+<blockquote>
+<p>$ git push &lt;远程主机名&gt; &lt;本地分支名&gt;:&lt;远程分支名&gt;</p>
+</blockquote>
+<p>注意，分支推送顺序的写法是&lt;来源地&gt;：&lt;目的地&gt;，所以git pull是&lt;远程分支&gt;:&lt;本地分支&gt;，而git push是&lt;本地分支&gt;:&lt;远程分支&gt;。   </p>
+<p>如果省略远程分支名，则表示将本地分支推送与之存在“追踪关系”的远程分支（通常两者同名），如果该远程分支不存在，则会被新建。   </p>
+<blockquote>
+<p>$ git push origin master</p>
+</blockquote>
+<p>上面的命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。   </p>
+<p>如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支。   </p>
+<blockquote>
+<p>$ git push origin :master</p>
+</blockquote>
+<p> #等同于<br> $ git push origin –delete master</p>
+<p>上面命令表示删除origin主机的master分支。   </p>
+<p>如果当前分支与远程分支之间存在追踪关系，则本地分支和远程分支都可以省略。   </p>
+<blockquote>
+<p>$ git push origin</p>
+</blockquote>
+<p>上面命令表示，将当前分支推送到origin主机对应的分支。<br>如果当前分支只有一个追踪分支，那么主机名都可以省略。   </p>
+<blockquote>
+<p>$ git push</p>
+</blockquote>
+<p>如果当前分支与镀铬主机存在追踪关系，则可以使用-u选项指定一个默认主机，这样后面就可以不加任何参数使用git push。   </p>
+<blockquote>
+<p>$ git push -u origin master</p>
+</blockquote>
+<p>上面命令将本地的master分支推送到origin主机，同时指定origin为默认主机，后面可以不加任何参数使用git push了。   </p>
+<p>不带任何参数的git push，默认只推送当前分支，这叫做simple方式。此外，还有一种matching方式，会推送所有对应的 远程分支的本地分支。Git 2.0版本呢之前，默认采用matching方法，现在改为默认采用simple方式。如果修改这个设置，可以采用git config命令。   </p>
+<blockquote>
+<p>$ git config –global push default matching</p>
+</blockquote>
+<h1 id="或者"><a href="#或者" class="headerlink" title="或者"></a>或者</h1><p>  $ git config –global push default simple</p>
+<p>还有一种情况，就是不管是否存在对应的远程分支，将本地的所有分支都推送到远程主机，这时需要使用–all选项。   </p>
+<blockquote>
+<p>$ git push –all origin</p>
+</blockquote>
+<p>上面命令表示，将所有本地分支都推送到origin主机。<br>如果远程主机的版本比本地版本更新，推送是Git会报错，要求先在本地做git pull合并差异，然后再推送到远程机。这时，如果你一定要推送，可以使用–force选项。（表示强制推送）</p>
+<blockquote>
+<p>$ git push –force origin</p>
+</blockquote>
+<p>上面命令使用–force选项，结果导致远程主机上的更新的版本被覆盖。除非你很确定要这样做，否则应该尽量避免使用–force选项。<br>最后，git push不会推送标签（tag），除非使用–tags选项。   </p>
+<blockquote>
+<p>$ git push origin –tags</p>
+</blockquote>
+<h2 id="关于tags"><a href="#关于tags" class="headerlink" title="关于tags"></a>关于tags</h2>
       
     </div>
     
@@ -517,8 +670,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -610,6 +772,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、git-clone命令"><span class="nav-number">1.</span> <span class="nav-text">一、git clone命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、git-remote"><span class="nav-number">2.</span> <span class="nav-text">二、git remote</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-git-remote-v"><span class="nav-number">2.1.</span> <span class="nav-text">1.git remote-v</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-git-remote-o"><span class="nav-number">2.2.</span> <span class="nav-text">2.git remote -o</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-git-remote-show-lt-主机名-gt"><span class="nav-number">2.3.</span> <span class="nav-text">3.git remote show &lt;主机名&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-git-remote-add"><span class="nav-number">2.4.</span> <span class="nav-text">4.git remote add</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-git-remote-rm"><span class="nav-number">2.5.</span> <span class="nav-text">5.git remote rm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-git-remote-rename"><span class="nav-number">2.6.</span> <span class="nav-text">6.git remote rename</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、git-fetch"><span class="nav-number">3.</span> <span class="nav-text">三、git fetch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、git-pull"><span class="nav-number">4.</span> <span class="nav-text">四、git pull</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#等同于下面的命令"><span class="nav-number"></span> <span class="nav-text">等同于下面的命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扩展（关于rebase模式）"><span class="nav-number">0.1.</span> <span class="nav-text">扩展（关于rebase模式）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、git-push"><span class="nav-number">1.</span> <span class="nav-text">五、git push</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#或者"><span class="nav-number"></span> <span class="nav-text">或者</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于tags"><span class="nav-number">1.</span> <span class="nav-text">关于tags</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
